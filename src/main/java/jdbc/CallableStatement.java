@@ -1,3 +1,5 @@
+package jdbc;
+
 import java.sql.*;
 
 public class CallableStatement {
@@ -5,7 +7,7 @@ public class CallableStatement {
         Class.forName("org.postgresql.Driver");
         Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/techpro", "postgres", "iderut");
         Statement st = con.createStatement();
-//CallableStatement ile function çağırmayı parametrelendireceğiz.
+//jdbc.CallableStatement    ile function çağırmayı parametrelendireceğiz.
         //1.Adım: Function kodunu yaz:
         String sql1 ="CREATE OR REPLACE FUNCTION  toplamaF(x NUMERIC, y NUMERIC)\n" +
                 "RETURNS NUMERIC\n" +
@@ -30,7 +32,7 @@ public class CallableStatement {
         cst1.setInt(2, 6);
         cst1.setInt(3, 4);
 
-        //5. Adım: execute() methodu ile CallableStatement'ı çalıştır.
+        //5. Adım: execute() methodu ile jdbc.CallableStatement'ı çalıştır.
         cst1.execute();
 
         //6. Adım: Sonucu çağırmak için return data type tipine göre
@@ -38,14 +40,14 @@ public class CallableStatement {
         System.out.println(cst1.getBigDecimal(1));
 
         //2. Örnek: Koninin hacmini hesaplayan bir function yazın.
-        String sql2 ="CREATE OR REPLACE FUNCTION konininHacmiF(x NUMERIC, y NUMERIC)\n" +
+        String sql2 ="CREATE OR REPLACE FUNCTION konininHacmiF(r NUMERIC, h NUMERIC)\n" +
                 "RETURNS NUMERIC\n" +
                 "LANGUAGE plpgsql\n" +
                 "AS\n" +
-                "$$\n" +
+                "$$\n"  +
                 "BEGIN\n" +
                 "\n" +
-                "RETURN x+y;\n" +
+                "RETURN 3,14*r*r*h/3 ;\n" +
                 "\n" +
                 "END\n" +
                 "$$";

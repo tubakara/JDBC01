@@ -1,3 +1,5 @@
+package jdbc;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -5,10 +7,18 @@ import java.sql.Statement;
 
 public class Execute01 {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        //1. Adım: Driver'a kaydol
         Class.forName("org.postgresql.Driver");
+
+        //2. Adım: Datbase'e bağlan
         Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/techpro", "postgres", "iderut");
+
+
+        //3. Adım: Statement oluştur.
         Statement st = con.createStatement();
         System.out.println("Connection Success");
+
+        //4. Adım: Query çalıştır.
         /*
         Execute() metodu hem DDL(CREATE, DROP,ALTER TABLE) VE DQL(SELECT) ICIN KULLANILIR
         1) EGER EXECUTE() DDL icin kullanilirsa false return yapar
@@ -33,7 +43,8 @@ public class Execute01 {
         String sql3 = "Drop Table workers";
         st.execute(sql3);
 
-        // baglantiyi kapama
+
+        //5. Adım: Bağlantı ve Statement'ı kapat.
         con.close();
         st.close();
 

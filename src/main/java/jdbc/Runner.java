@@ -1,3 +1,5 @@
+package jdbc;
+
 import java.sql.Connection;
 import java.sql.Statement;
 
@@ -9,10 +11,15 @@ public class Runner {
         //3. adim Statement olustur
         Statement statement = JdbcUtils.createStatement();
 //4. adim
-       //JdbcUtils.execute("create table students(name varchar(20), id int, address varchar(80))");
+     //  jdbc.JdbcUtils.execute("create table students2(name varchar(20), id int, address varchar(80))");
 
-        JdbcUtils.createTable("abc1","classes varchar(20)","teacher_Name varchar(20)","id int");
+       //jdbc.JdbcUtils.executeQuery("SELECT * FROM companies WHERE number_of_employees=(SELECT MIN(number_of_employees) FROM companies)");
+
+       //jdbc.JdbcUtils.createTable("abch","classes varchar(20)","teacher_Name varchar(20)","id int");
+
 //5 baglantiyi kapat
-        JdbcUtils.closeConnectionAndStatement();
+       // jdbc.JdbcUtils.closeConnectionAndStatement();
+
+
     }
 }

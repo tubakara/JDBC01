@@ -1,3 +1,5 @@
+package jdbc;
+
 import javax.xml.transform.Result;
 import java.sql.*;
 
@@ -8,7 +10,7 @@ public class ExecuteQuery01 {
         Statement st = con.createStatement();
 
         //1. Örnek:  region id'si 1 olan "country name" değerlerini çağırın.
-        String sql1 = "select country_name from countries where region_id=1";
+        String sql1 = "select country_name from countries where region_id=1" ;
         boolean r1 = st.execute(sql1);
         System.out.println("r1 = " + r1);
 
